@@ -137,7 +137,7 @@ body {
   font-family: "Barlow Semi Condensed", sans-serif;
   font-size: 0.8125rem;
   font-weight: 300;
-  background-color: hsl(214, 17%, 92%);
+  background-color: white;
 }
 body .active {
   border: 0.15rem solid hsl(263, 55%, 52%);
