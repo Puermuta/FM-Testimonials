@@ -1,0 +1,172 @@
+@use "fonts";
+
+/* Primary colors */
+
+$clr-purple-50: hsl(260, 100%, 95%);
+$clr-purple-300: hsl(264, 82%, 80%);
+$clr-purple-500: hsl(263, 55%, 52%);
+
+/* Neutral colors */
+
+$clr-white: white;
+$clr-grey-100: hsl(214, 17%, 92%);
+$clr-grey-200: hsl(0, 0%, 81%);
+$clr-grey-400: hsl(224, 10%, 45%);
+$clr-grey-500: hsl(217, 19%, 35%);
+$clr-dark-blue: hsl(219, 29%, 14%);
+$clr-black: hsl(0, 0%, 7%);
+
+/* Fonts */
+
+$fzs-s: 0.6875rem; /* 11px */
+$fzs-m: 0.8125rem; /* 13px */
+$ff-primary: "Barlow Semi Condensed", sans-serif;
+$fw-light: 300;
+$fw-standard: 400;
+$fw-heavy: 500;
+
+/* Spacings */
+
+$card-spacing: 2rem;
+$card-border-radius: 0.5rem;
+$card-padding: 1.75rem;
+$card-gap: 1rem;
+
+$avatar-border-width: 0.15rem;
+
+/* CSS-reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, li, ul, ol, p {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    margin: 0;
+    padding: 6rem 0;
+
+    display: flex;
+    gap: $card-spacing;
+    flex-direction: column;
+    justify-content: center;
+
+    font-family: $ff-primary;
+    font-size: $fzs-m;
+    font-weight: $fw-light;
+
+    background-color: $clr-grey-100;
+
+    .active {border: $avatar-border-width solid $clr-purple-500;}
+
+    .dark-blue {
+        background-color: $clr-dark-blue;
+        color: $clr-grey-200;
+    }
+
+    .grey {
+        background-color: $clr-grey-500;
+        color: $clr-white;
+    }
+
+    .white {
+        background-color: $clr-white;
+        color: $clr-grey-500;
+    }
+
+    .purple {
+        background-color: $clr-purple-500;
+        color: $clr-white;
+        .active {border: $avatar-border-width solid $clr-purple-300;}
+    }
+
+    
+    
+    .card {
+        margin: 0 $card-spacing;
+        padding: $card-padding;
+        border-radius: $card-border-radius;
+
+        display: flex;
+        flex-direction: column;
+        gap: $card-gap;
+
+        .card_header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            
+            .card_avatar {
+                border-radius: 50%;
+                width: 2rem;
+            }
+
+            .card_name {
+                font-weight: $fw-standard;
+            }
+
+            .card_academics {
+                font-size: $fzs-s;
+            }
+        }
+        
+        .card_title {
+            font-weight: $fw-heavy;
+        }
+    }
+}
+
+@media (min-width: 750px) {
+
+    html {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    body {
+        min-height: auto;
+        padding: 0;
+        margin: 10rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+            "area1 area1 area2 area5"
+            "area3 area4 area4 area5";   
+
+        @for $i from 1 through 5 {
+            .area-#{$i} {
+                grid-area: area#{$i};
+            }
+        }
+
+        .card {
+            margin: 0;
+            position: relative;
+
+            &:after {
+                content: "";
+                position: absolute;
+                box-shadow: 3rem 3rem 2rem $clr-grey-200;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: $card-border-radius;
+            }
+            
+            
+            &:hover {
+                transform: scale(0.99);
+                cursor: pointer;
+            }
+        }
+    }
+}
