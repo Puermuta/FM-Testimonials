@@ -236,4 +236,9 @@ body .card .card_title {
     transform: scale(0.99);
     cursor: pointer;
   }
+  body .card:first-of-type {
+    background-image: url("../images/bg-pattern-quotation.svg");
+    background-repeat: no-repeat;
+    background-position: top right 4rem;
+  }
 }/*# sourceMappingURL=style.css.map */
